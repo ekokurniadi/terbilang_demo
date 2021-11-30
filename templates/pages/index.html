@@ -1,0 +1,98 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terbilang DEMO</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 py-3">
+                    <h5>Demo Package Terbilang</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="/proses">
+                        <div class="form-group">
+                            <label for="angka" class="col-md-2 control-label">Masukkan Nominal</label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" id="angka" name="angka" onkeyup="masking()" placeholder="Masukkan nominal">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="angka" class="col-md-2 control-label">Nominal Terbilang</label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" id="angka_terbilang" name="angka_terbilang" readonly placeholder="Nominal Terbilang">
+                            </div>
+                        </div>
+                        <div class="form-group ml-3">
+                            <button type="button" class="btn btn-primary btn-flat btn-md" id="btn-process">Proses</button>
+                            <button type="reset" class="btn btn-warning btn-flat btn-md" id="btn-reset">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script>
+    function masking() {
+        var fnf = document.getElementById("angka");
+        fnf.addEventListener('keyup', function(evt) {
+            var n = parseInt(this.value.replace(/\D/g, ''), 10);
+            fnf.value = n.toLocaleString();
+        }, false);
+    }
+    $("#btn-process").click(function() {
+        let input = $('#angka').val();
+        let replaced = input.replace(/,/g, '');
+        $.ajax({
+            url: "/api/v1/proses",
+            dataType: "JSON",
+            contentType: 'application/json',
+            method: "POST",
+            data: JSON.stringify({
+                "angka": replaced
+            }),
+            processData: false,
+            beforeSend: function() {
+                $('#btn-process').attr('disabled', true);
+                $('#btn-process').html('<i class="fa fa-spinner fa-spin"></i> Loading');
+            },
+            success: function(response) {
+                if (response.meta.code == 200) {
+                    $('#btn-process').attr('disabled', false);
+                    $('#btn-process').html('Proses');
+                    $('#angka_terbilang').val(response.data)
+                } else {
+                    alert('Oops something went wrong');
+                    $('#btn-process').attr('disabled', false);
+                    $('#btn-process').html('Proses');
+                }
+            },
+            error: function() {
+                alert('Oops something went wrong');
+                $('#btn-process').attr('disabled', false);
+                $('#btn-process').html('Proses');
+            }
+        });
+    });
+</script>
+
+</html>
+{{end}}
