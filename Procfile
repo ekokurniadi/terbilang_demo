@@ -1,1 +1,1 @@
-web: github.com/ekokurniadi/terbilang_demo
+web: terbilang_demo
