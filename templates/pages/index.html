@@ -60,7 +60,7 @@
     }
     $("#btn-process").click(function() {
         let input = $('#angka').val();
-        let replaced = input.replace(/,/g, '');
+        let replaced = input.replace(/[,.]/g, '');
         $.ajax({
             url: "/api/v1/proses",
             dataType: "JSON",

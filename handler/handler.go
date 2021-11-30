@@ -28,12 +28,12 @@ func (h *routerHandler) Process(c *gin.Context) {
 		return
 	}
 
-	formatRupiah := terbilang.Terbilang{}
+	formatRupiah := terbilang.Init()
 	angka, err := strconv.Atoi(input.Angka)
 	if err != nil {
 		fmt.Println(err)
 	}
-	hasil := formatRupiah.Generate(int64(angka))
+	hasil := formatRupiah.Convert(int64(angka))
 
 	response := helper.ApiResponse("Success", http.StatusOK, "success", strings.Title(hasil))
 	c.JSON(http.StatusOK, response)

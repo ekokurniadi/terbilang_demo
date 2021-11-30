@@ -4,7 +4,7 @@ module github.com/ekokurniadi/terbilang_demo
 go 1.17
 
 require (
-	github.com/ekokurniadi/terbilang v0.0.0-20211130180348-73af6dd0c346
+	github.com/ekokurniadi/terbilang v1.1.4
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.7.7
