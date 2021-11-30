@@ -10,6 +10,8 @@ github.com/ekokurniadi/terbilang v1.1.4 h1:6PTJqyOIe6E2rknAWDlwY+fSfLFDoekdEKeHK
 github.com/ekokurniadi/terbilang v1.1.4/go.mod h1:k+sAfkVdKCe7g0PiH6O4REqEO1O8x8a0TMgL5XoPp1k=
 github.com/ekokurniadi/terbilang v1.1.6 h1:92SOu5PsUK8VYFuhOp2PlimbsRc7lLA8CY1KzULW45A=
 github.com/ekokurniadi/terbilang v1.1.6/go.mod h1:k+sAfkVdKCe7g0PiH6O4REqEO1O8x8a0TMgL5XoPp1k=
+github.com/ekokurniadi/terbilang v1.1.7 h1:6mGjRDRlvlyFReoxLTmPnO10VX5h7DOKGpRBiIKpQPA=
+github.com/ekokurniadi/terbilang v1.1.7/go.mod h1:k+sAfkVdKCe7g0PiH6O4REqEO1O8x8a0TMgL5XoPp1k=
 github.com/gin-contrib/cors v1.3.1 h1:doAsuITavI4IOcd0Y19U4B+O0dNWihRyX//nn4sEmgA=
 github.com/gin-contrib/cors v1.3.1/go.mod h1:jjEJ4268OPZUcU7k9Pm653S7lXUGcqMADzFA61xsmDk=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
